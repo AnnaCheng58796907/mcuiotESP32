@@ -12,7 +12,7 @@ data = {
 }
 
 # 使用 JSONPath 查詢
-jsonpath_expr = parse("$.store.book[0].title")
+jsonpath_expr = parse("$.store.book[?(@.price>12)]")
 matches = [match.value for match in jsonpath_expr.find(data)]
 
 print(matches)  # 輸出: ['Book1']
