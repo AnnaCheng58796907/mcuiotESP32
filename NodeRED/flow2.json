@@ -1,0 +1,111 @@
+[
+    {
+        "id": "2a6ebaf78c879ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d1c220795ed96c65",
+        "type": "jsonpath",
+        "z": "2a6ebaf78c879ca8",
+        "expression": "$.data[?(@.stationNo==\"031\")].levelOut",
+        "split": true,
+        "name": "彩虹橋",
+        "x": 910,
+        "y": 160,
+        "wires": [
+            [
+                "b2f3397474a3c7c2"
+            ]
+        ]
+    },
+    {
+        "id": "6a07c68839a561e8",
+        "type": "inject",
+        "z": "2a6ebaf78c879ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "12481e68c0196391"
+            ]
+        ]
+    },
+    {
+        "id": "12481e68c0196391",
+        "type": "http request",
+        "z": "2a6ebaf78c879ca8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://wic.heo.taipei/OpenData/API/Water/Get?stationNo=&loginId=river&dataKey=9E2648AA",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [
+                "c9b03b8992f4c69c"
+            ]
+        ]
+    },
+    {
+        "id": "c9b03b8992f4c69c",
+        "type": "json",
+        "z": "2a6ebaf78c879ca8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 630,
+        "y": 160,
+        "wires": [
+            [
+                "d1c220795ed96c65"
+            ]
+        ]
+    },
+    {
+        "id": "b2f3397474a3c7c2",
+        "type": "debug",
+        "z": "2a6ebaf78c879ca8",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 160,
+        "wires": []
+    }
+]
