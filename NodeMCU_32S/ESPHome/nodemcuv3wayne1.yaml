@@ -1,0 +1,46 @@
+esphome:
+  name: annawer
+
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "q58796907"
+
+ota:
+  - platform: esphome
+    password: "q5j6jp6m3"
+
+wifi:
+  ssid: "J509-19 9262"
+  password: "q58796907"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Annawer Fallback Hotspot"
+    password: "AnnawerHotspot"
+
+captive_portal:
+
+
+# Enable default Web server
+web_server:
+  port: 80
+  auth:
+    username: "wenchin"
+    password: "WayneWeb"
+ 
+switch:
+  # ESP8266 / ESP32 內建藍色 LED
+  - platform: gpio
+    name: Built-in Blue LED
+    id: led_builtin
+    pin: 
+      number: 2
+      inverted: True
